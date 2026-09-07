@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תוכנית טיול — איסלנד 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+</head>
+<body>
+
+<div id="bg-slideshow" class="bg-slideshow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-burger" id="nav-burger">☰</button>
+    <div class="nav-links">
+      <a href="index.html">🏠 בית</a>
+      <a href="itinerary.html" class="active">📅 תוכנית</a>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+      <a href="info.html">ℹ️ מידע</a>
+      <a href="private.html">🔐 פרטי</a>
+    </div>
+    <span class="nav-brand">🧊 <span>איסלנד 2026</span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">🏠 בית</a>
+  <a href="itinerary.html" class="active">📅 תוכנית</a>
+  <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+  <a href="info.html">ℹ️ מידע</a>
+  <a href="private.html">🔐 פרטי</a>
+</div>
+
+<div class="page">
+  <div class="hero" style="padding-bottom:.5rem">
+    <h1>📅 תוכנית הטיול</h1>
+    <p class="sub">16–27 ספטמבר 2026 · 12 ימים</p>
+  </div>
+
+  <!-- MAP - Polarsteps live embed -->
+  <div class="section-title">🗺️ מפת המסלול (חי מ-Polarsteps)</div>
+  <div class="map-container">
+    <iframe src="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026/embed"
+            style="width:100%;height:480px;border:none;display:block"
+            loading="lazy" title="מפת טיול איסלנד 2026 - Polarsteps"></iframe>
+  </div>
+  <p style="font-size:11px;color:var(--text2);margin:0.5rem 0 1.25rem;text-align:center">
+    מסלול חי ומעודכן · <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank" style="color:var(--accent)">פתח בעמוד מלא ↗</a>
+  </p>
+
+  <!-- LEGEND -->
+  <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.25rem">
+    <span class="region-badge">🏙️ רייקיאוויק</span>
+    <span class="region-badge">🏔️ סנייפלס</span>
+    <span class="region-badge">🌊 חוף דרומי</span>
+    <span class="region-badge">🧊 קרחונים</span>
+    <span class="region-badge">🌿 Selfoss</span>
+    <span class="region-badge">✈️ כפלאוויק</span>
+  </div>
+
+  <div id="itinerary-list"></div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+const DAYS = [
+  { day:1,  date:"2026-09-16", title:"נחיתה ורייקיאוויק",  emoji:"✈️", region:"🏙️ Reykjavík",
+    morning:"04:30 הגעה לשדה התעופה ת\"א · 07:30 המראה LY221 → פריז · 14:00 המראה FI543 → רייקיאוויק",
+    afternoon:"15:35 נחיתה KEF 🧊 · 16:00 איסוף רכב Blue Car Rental #0N504Z",
+    drive:"", notes:"זמן טיסה כולל: ~12 שעות · שעון איסלנד = ישראל −3" },
+  { day:2,  date:"2026-09-17", title:"סיור רייקיאוויק",    emoji:"🚲", region:"🏙️ Reykjavík",
+    morning:"10:00 — סיור אופניים חשמליות · Old Harbor, Sun Voyager, Harpa, Hallgrímskirkja",
+    afternoon:"18:00 — FlyOver Iceland (הוזמן)", drive:"", notes:"" },
+  { day:3,  date:"2026-09-18", title:"נסיעה לסנייפלס",     emoji:"🦭", region:"🏔️ Snæfellsnes",
+    morning:"נסיעה צפונה דרך Hvalfjörður · עצירה ב-Gerðuberg (עמודי בזלת)",
+    afternoon:"חוף Ytri Tunga — צפייה בכלבי ים 🦭", drive:"3 שעות", notes:"יום מעבר עם עצירות צילום" },
+  { day:4,  date:"2026-09-19", title:"לב חצי האי",         emoji:"🏔️", region:"🏔️ Snæfellsnes",
+    morning:"Djúpalónssandur · Hellnar · Vatnshellir (מערת לבה, 8,000 שנה)",
+    afternoon:"Kirkjufell ⭐ — להכין מצלמות!", drive:"1.5 שעות", notes:"" },
+  { day:5,  date:"2026-09-20", title:"נסיעה לדרום",        emoji:"💧", region:"🌊 Vík / Hella",
+    morning:"נסיעה ארוכה דרומה · Seljalandsfoss (אפשר לעבור מאחוריו)",
+    afternoon:"Skógafoss — מפל 60 מטר", drive:"4.5 שעות", notes:"יום מעבר ארוך" },
+  { day:6,  date:"2026-09-21", title:"אקשן בדרום",         emoji:"🧊", region:"🌊 Vík / Hella",
+    morning:"09:00 — סיור מערת קרח (Ref: KTR-100620490)",
+    afternoon:"14:00 — Zipline בVík (Ref: KTR-100708978) · Reynisfjara — חוף שחור", drive:"1 שעה", notes:"אטרקציות מוזמנות ⭐" },
+  { day:7,  date:"2026-09-22", title:"נסיעה מזרחה",        emoji:"🏞️", region:"🧊 Glacier Area",
+    morning:"Fjaðrárgljúfur — קניון מרהיב",
+    afternoon:"Svartifoss — מפל עמודי בזלת (הליכה)", drive:"3 שעות", notes:"" },
+  { day:8,  date:"2026-09-23", title:"מלכות הקרח",         emoji:"🧊", region:"🧊 Glacier Area",
+    morning:"10:00 — Zodiac Glacier Lagoon (Ref: ICE-101020929) ⭐",
+    afternoon:"Diamond Beach · Stokksnes — Viking Village & sunset", drive:"1 שעה", notes:"להגיע בזמן להזמנה!" },
+  { day:9,  date:"2026-09-24", title:"חזרה מערבה",         emoji:"🌿", region:"🌿 Selfoss",
+    morning:"נסיעה איטית עם עצירות",
+    afternoon:"Urriðafoss", drive:"4 שעות", notes:"יום רגוע" },
+  { day:10, date:"2026-09-25", title:"Golden Circle",       emoji:"♨️", region:"🌿 Selfoss",
+    morning:"Geysir (Strokkur) + Gullfoss",
+    afternoon:"Þingvellir — מעבר בין לוחות טקטוניים ⭐⭐", drive:"1–2 שעות", notes:"אתרים בדירוג 10!" },
+  { day:11, date:"2026-09-26", title:"פינוק וסיום",         emoji:"🛁", region:"✈️ Keflavík",
+    morning:"Blue Lagoon — ספא תרמי ⭐⭐",
+    afternoon:"Reykjanes: Gunnuhver, Brimketill (אופציונלי)", drive:"2.5 שעות", notes:"לינה ליד השדה" },
+  { day:12, date:"2026-09-27", title:"יום סיום — טיסה",    emoji:"🏠", region:"✈️ Keflavík",
+    morning:"04:35 הגעה לשדה KEF · 07:35 המראה FI542 → פריז · 11:05 נחיתה CDG",
+    afternoon:"15:35 המראה LY324 → ת\"א · 20:55 נחיתה בת\"א 🏠",
+    drive:"5 דקות לשדה", notes:"טרמינל 2B בפריז · זמן מעבר ~4.5 שעות" }
+];
+
+function fmtDate(s){
+  const d=new Date(s);
+  const dn=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  return `${dn[d.getDay()]} ${d.getDate()}/9`;
+}
+const ts = new Date().toISOString().slice(0,10);
+
+const container = document.getElementById('itinerary-list');
+container.innerHTML = DAYS.map(d=>`
+  <div class="day-row" id="day${d.day}">
+    <div class="day-num"><div class="day-circle ${d.date===ts?'today':''}">${d.day}</div></div>
+    <div class="day-content">
+      <div class="day-header">
+        <span class="day-date">${fmtDate(d.date)}</span>
+        <span class="day-name">${d.emoji} ${d.title}</span>
+        <span class="region-badge">${d.region}</span>
+        ${d.date===ts?'<span style="background:var(--accent2);color:white;font-size:10px;padding:2px 7px;border-radius:20px">היום</span>':''}
+      </div>
+      <div class="detail-row"><span class="icon">🌅</span> <span>${d.morning}</span></div>
+      <div class="detail-row"><span class="icon">🌆</span> <span>${d.afternoon}</span></div>
+      ${d.drive?`<div class="detail-row"><span class="icon">🚗</span> <span style="color:var(--text2)">נסיעה: ${d.drive}</span></div>`:''}
+      ${d.notes?`<div class="detail-row"><span class="icon">📝</span> <span style="color:var(--text2)">${d.notes}</span></div>`:''}
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>

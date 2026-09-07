@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פרטי הזמנות — איסלנד 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+</head>
+<body>
+
+<div id="bg-slideshow" class="bg-slideshow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-burger" id="nav-burger">☰</button>
+    <div class="nav-links">
+      <a href="index.html">🏠 בית</a>
+      <a href="itinerary.html">📅 תוכנית</a>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+      <a href="info.html">ℹ️ מידע</a>
+      <a href="private.html" class="active">🔐 פרטי</a>
+    </div>
+    <span class="nav-brand">🧊 <span>איסלנד 2026</span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">🏠 בית</a>
+  <a href="itinerary.html">📅 תוכנית</a>
+  <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+  <a href="info.html">ℹ️ מידע</a>
+  <a href="private.html" class="active">🔐 פרטי</a>
+</div>
+
+<div class="page">
+
+  <!-- LOCK -->
+  <div id="lock-screen" class="lock-overlay">
+    <div class="lock-icon">🔐</div>
+    <h2>פרטי הזמנות</h2>
+    <p>הזן קוד לצפייה בפרטי הלינה וקודי האישור</p>
+    <div class="pin-input">
+      <input type="password" id="pin" placeholder="קוד" maxlength="10" inputmode="numeric" autocomplete="off">
+      <button class="btn" onclick="checkPin()">כניסה</button>
+    </div>
+    <div id="pin-error" class="error-msg" style="display:none">קוד שגוי — נסה שוב</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="private-content" style="display:none">
+
+    <div class="hero" style="padding-bottom:.5rem">
+      <h1>🔐 פרטי הזמנות</h1>
+      <p class="sub">לשימוש בדרך · לחץ על כתובת לניווט</p>
+    </div>
+
+    <!-- CAR -->
+    <div class="section-title">🚗 רכב</div>
+    <div class="card">
+      <table>
+        <tr><th>פריט</th><th>פרטים</th></tr>
+        <tr><td>דגם</td><td>Toyota Highlander 7 Seater 4WD</td></tr>
+        <tr><td>חברה</td><td>Blue Car Rental</td></tr>
+        <tr><td>מספר הזמנה</td><td><span class="code">0N504Z</span> (קיים בארנק בטלפון)</td></tr>
+        <tr><td>איסוף</td><td>16 ספטמבר 2026 · 16:00</td></tr>
+        <tr><td>החזרה</td><td>27 ספטמבר 2026 · 05:30</td></tr>
+      </table>
+    </div>
+
+    <!-- ACCOMMODATION -->
+    <div class="section-title">🏠 מקומות לינה</div>
+    <div class="card">
+      <table>
+        <tr><th>לילות</th><th>מקום + כתובת</th><th>אישור</th><th>הערה</th></tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">16–18 ספטמבר</td>
+          <td>
+            Airbnb — Reykjavík<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Klapparstígur+1,+Reykjavík+101,+Iceland" target="_blank">📍 Klapparstígur 1, 101</a>
+          </td>
+          <td><span class="code">HMJH4QB4QN</span></td>
+          <td style="color:var(--orange);font-size:12px">ביטול עד 16/9</td>
+        </tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">18–20 ספטמבר</td>
+          <td>
+            Airbnb — Hellissandur<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Hellissandur,+Snæfellsbær+360,+Iceland" target="_blank">📍 Hella, Hellissandur 360</a>
+            <br><span style="font-size:11px;color:var(--text2)">בית ראשון משמאל בכניסה, שלט Hella</span>
+          </td>
+          <td><span class="code">HM32DTJ5QD</span></td>
+          <td style="color:var(--orange);font-size:12px">ביטול עד 6/9</td>
+        </tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">20–22 ספטמבר</td>
+          <td>
+            Sólheimahjáleiga Guesthouse<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Sólheimahjáleiguvegur,+871,+Iceland" target="_blank">📍 ניווט</a>
+          </td>
+          <td><span class="code">#5553684022</span><br>PIN: <span class="code">4915</span></td>
+          <td style="color:var(--red);font-size:12px">לא ניתן לביטול</td>
+        </tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">22–24 ספטמבר</td>
+          <td>
+            Brunnholl Country Guesthouse<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Brunnholl+Country+Guesthouse,+781+Hofn,+Iceland" target="_blank">📍 Brunholl, 781 Hofn</a>
+          </td>
+          <td><span class="code">#6631695271</span><br>PIN: <span class="code">7900</span></td>
+          <td style="color:var(--red);font-size:12px">לא ניתן לביטול</td>
+        </tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">24–26 ספטמבר</td>
+          <td>
+            Airbnb — Selfoss<br>
+            <a class="maps-link" href="https://maps.google.com/?q=2+Stangarbraut,+Selfoss+801,+Iceland" target="_blank">📍 2 Stangarbraut, Selfoss 801</a>
+          </td>
+          <td><span class="code">HMYRYDBRYW</span></td>
+          <td style="color:var(--orange);font-size:12px">ביטול עד 19/9</td>
+        </tr>
+        <tr>
+          <td style="white-space:nowrap;font-size:12px">26–27 ספטמבר</td>
+          <td>
+            Hotel Keflavik<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Hotel+Keflavik,+Keflavik+Airport,+Iceland" target="_blank">📍 ניווט לבית מלון</a>
+          </td>
+          <td><span class="code">#5553638088</span><br>PIN: <span class="code">3278</span></td>
+          <td style="font-size:12px">—</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- BOOKED ATTRACTIONS -->
+    <div class="section-title">🎯 אטרקציות מוזמנות</div>
+    <div class="card">
+      <table>
+        <tr><th>יום</th><th>אטרקציה</th><th>אישור</th><th>שעה</th></tr>
+        <tr>
+          <td style="font-size:12px">יום 2 · 17/9</td>
+          <td>🚲 סיור אופניים חשמליות</td>
+          <td><span class="code">שולם</span></td>
+          <td>10:00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px">יום 2 · 17/9</td>
+          <td>
+            🎬 FlyOver Iceland<br>
+            <a class="maps-link" href="https://maps.google.com/?q=FlyOver+Iceland+Reykjavik" target="_blank">📍 מיקום</a>
+          </td>
+          <td><span class="code">שולם</span></td>
+          <td>18:00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px">יום 6 · 21/9</td>
+          <td>
+            🧊 סיור מערת קרח<br>
+            <a class="maps-link" href="https://katlatrack.is" target="_blank">🔗 katlatrack.is</a>
+          </td>
+          <td><span class="code">KTR-100620490</span></td>
+          <td>09:00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px">יום 6 · 21/9</td>
+          <td>
+            🪂 Zipline בVík<br>
+            <a class="maps-link" href="https://katlatrack.is" target="_blank">🔗 katlatrack.is</a>
+            &nbsp;
+            <a class="maps-link" href="https://maps.google.com/?q=Katla+Track+Vik+Iceland" target="_blank">📍 מיקום</a>
+          </td>
+          <td><span class="code">KTR-100708978</span></td>
+          <td>14:00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px">יום 8 · 23/9</td>
+          <td>
+            🧊 Zodiac Glacier Lagoon<br>
+            <a class="maps-link" href="https://maps.google.com/?q=Jokulsarlon+Glacier+Lagoon,+Iceland" target="_blank">📍 Jökulsárlón</a>
+          </td>
+          <td><span class="code">ICE-101020929</span></td>
+          <td>10:00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin-top:1.5rem">
+      <button class="btn" onclick="lock()" style="background:var(--bg3);color:var(--text2);border:1px solid var(--border)">🔒 נעל מסך</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+const PIN = "99010611";
+function checkPin(){
+  if(document.getElementById('pin').value===PIN){
+    document.getElementById('lock-screen').style.display='none';
+    document.getElementById('private-content').style.display='block';
+    sessionStorage.setItem('unlocked','1');
+  } else {
+    document.getElementById('pin-error').style.display='block';
+    document.getElementById('pin').value='';
+    document.getElementById('pin').focus();
+    setTimeout(()=>document.getElementById('pin-error').style.display='none',3000);
+  }
+}
+function lock(){
+  sessionStorage.removeItem('unlocked');
+  document.getElementById('private-content').style.display='none';
+  document.getElementById('lock-screen').style.display='flex';
+  document.getElementById('pin').value='';
+}
+if(sessionStorage.getItem('unlocked')==='1'){
+  document.getElementById('lock-screen').style.display='none';
+  document.getElementById('private-content').style.display='block';
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Enter') checkPin(); });
+</script>
+</body>
+</html>

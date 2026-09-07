@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טיולי אבא — איסלנד 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧊</text></svg>">
+  <style>
+    .tt-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto; gap:8px 10px; margin-bottom:10px; }
+    @media(max-width:580px){ .tt-grid{ grid-template-columns:1fr; grid-template-rows:none; } }
+    .tt-col { display:contents; }
+    .tt-hdr { border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.22); background:rgba(20,40,80,0.88); grid-row:1; }
+    .tt-hdr.today { border-color:rgba(147,197,253,0.5); }
+    .tt-hdr.tmrw  { border-color:rgba(252,211,77,0.45); }
+    .tt-label { font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:5px; }
+    .tt-title { font-size:14px; font-weight:800; color:var(--text); margin-bottom:2px; }
+    .tt-date  { font-size:11px; color:var(--text2); }
+    .tt-body  { background:rgba(20,40,80,0.82); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:12px; grid-row:2; }
+    .tt-row   { display:flex; gap:7px; align-items:flex-start; margin-bottom:5px; }
+    .tt-slot  { font-size:10px; font-weight:700; min-width:40px; padding-top:1px; flex-shrink:0; }
+    .tt-slot.am  { color:#6ee7b7; }
+    .tt-slot.pm  { color:#93c5fd; }
+    .tt-slot.eve { color:#c4b5fd; }
+    .tt-slot.drv { color:#fca5a5; }
+    .tt-text  { font-size:12px; color:var(--text); line-height:1.4; }
+    .tt-sub   { font-size:10.5px; color:var(--text2); line-height:1.4; margin-top:1px; }
+    .tt-sep   { height:1px; background:rgba(255,255,255,0.12); margin:8px 0; }
+    .tt-stay  { display:flex; gap:5px; align-items:center; font-size:11px; color:var(--text2); }
+    .tt-link  { font-size:12px; color:var(--accent); text-decoration:none; margin-top:6px; display:inline-block; }
+    @media(min-width:700px){
+      .tt-title{font-size:16px} .tt-text{font-size:14px} .tt-sub{font-size:12px}
+      .tt-slot{font-size:12px;min-width:46px} .tt-date{font-size:12px}
+    }
+    .w-mini   { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:10px; padding:10px; text-align:center; color:var(--text); grid-row:3; }
+    .w-mini .wlbl  { font-size:11px; color:var(--text2); margin-bottom:4px; }
+    .w-mini .wlbl a { color:var(--accent); text-decoration:none; }
+    .w-mini .wicon { font-size:24px; margin-bottom:3px; }
+    .w-mini .wtmp  { font-size:16px; font-weight:800; }
+    .w-mini .wdesc { font-size:11px; color:var(--text2); margin-top:2px; }
+    @media(min-width:700px){ .w-mini .wtmp{font-size:18px} .w-mini .wicon{font-size:28px} }
+  </style>
+</head>
+<body>
+
+<div id="bg-slideshow" class="bg-slideshow"></div>
+<div class="photo-credit">Photos: Unsplash</div>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-burger" id="nav-burger" aria-label="תפריט">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="active">🏠 בית</a>
+      <a href="itinerary.html">📅 תוכנית</a>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+      <a href="info.html">ℹ️ מידע</a>
+      <a href="private.html">🔐 פרטי</a>
+    </div>
+    <span class="nav-brand">🧊 <span>איסלנד 2026</span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="active">🏠 בית</a>
+  <a href="itinerary.html">📅 תוכנית</a>
+  <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+  <a href="info.html">ℹ️ מידע</a>
+  <a href="private.html">🔐 פרטי</a>
+</div>
+
+<div class="page">
+
+  <div class="hero">
+    <h1>🧊 טיולי אבא — איסלנד 2026</h1>
+    <p class="sub">16–27 ספטמבר 2026 · 5 מטיילים · 12 ימים של הרפתקה</p>
+  </div>
+
+  <!-- COUNTDOWN + FIRST 2 DAYS — shown before trip -->
+  <div id="pre-trip" style="display:none">
+    <div class="countdown">
+      <div class="countdown-item"><div class="num" id="cd-days">--</div><div class="label">ימים</div></div>
+      <div class="countdown-item"><div class="num" id="cd-hours">--</div><div class="label">שעות</div></div>
+      <div class="countdown-item"><div class="num" id="cd-mins">--</div><div class="label">דקות</div></div>
+      <div class="countdown-item"><div class="num" id="cd-secs">--</div><div class="label">שניות</div></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--text2);margin-bottom:1.25rem">עד שהרפתקה מתחילה 🧊</p>
+    <!-- show day 1 + day 2 as preview -->
+    <div class="tt-grid" id="pre-grid"></div>
+  </div>
+
+  <!-- TODAY / TOMORROW — shown during trip -->
+  <div id="today-section" style="display:none; margin-bottom:0.5rem;">
+    <div class="tt-grid" id="tt-grid"></div>
+  </div>
+
+  <!-- POST-TRIP -->
+  <div id="post-trip" style="display:none;text-align:center;padding:1rem 0 1.5rem">
+    <p style="font-size:18px;font-weight:700">🏠 הטיול הסתיים — זיכרונות יפים לנצח!</p>
+    <p style="color:var(--text2);font-size:13px;margin-top:0.4rem">לתמונות מהטיול 👉 <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank" style="color:var(--accent)">Polarsteps</a></p>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section-title">✈️ בקצרה…</div>
+  <div class="grid-4">
+    <div class="stat-mini"><div class="num">12</div><div class="lbl">ימי טיול</div></div>
+    <div class="stat-mini"><div class="num">5</div><div class="lbl">מטיילים</div></div>
+    <div class="stat-mini"><div class="num">~2,800</div><div class="lbl">ק"מ נהיגה</div></div>
+    <div class="stat-mini"><div class="num">~4,400</div><div class="lbl">ק"מ טיסה</div></div>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <div class="section-title">⭐ היילייטים לפי סדר</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="info-item"><span class="info-icon">🚲</span><div><div class="info-label">יום 2 · 17/9</div><div class="info-value">סיור אופניים חשמליות ברייקיאוויק + FlyOver Iceland</div></div></div>
+      <div class="info-item"><span class="info-icon">🏔️</span><div><div class="info-label">יום 4 · 19/9</div><div class="info-value">Kirkjufell — ההר הכי מצולם באיסלנד</div></div></div>
+      <div class="info-item"><span class="info-icon">💧</span><div><div class="info-label">יום 5 · 20/9</div><div class="info-value">Skógafoss — מפל 60 מטר</div></div></div>
+      <div class="info-item"><span class="info-icon">🧊</span><div><div class="info-label">יום 6 · 21/9</div><div class="info-value">מערת קרח + Zipline בVík ⭐</div></div></div>
+      <div class="info-item" style="border:none"><span class="info-icon">🏞️</span><div><div class="info-label">יום 7 · 22/9</div><div class="info-value">Fjaðrárgljúfur — קניון מרהיב</div></div></div>
+    </div>
+    <div class="card">
+      <div class="info-item"><span class="info-icon">🧊</span><div><div class="info-label">יום 8 · 23/9</div><div class="info-value">Zodiac Glacier Lagoon + Diamond Beach ⭐</div></div></div>
+      <div class="info-item"><span class="info-icon">♨️</span><div><div class="info-label">יום 10 · 25/9</div><div class="info-value">Golden Circle — Geysir, Gullfoss, Þingvellir ⭐⭐</div></div></div>
+      <div class="info-item"><span class="info-icon">🛁</span><div><div class="info-label">יום 11 · 26/9</div><div class="info-value">Blue Lagoon — ספא תרמי ⭐⭐</div></div></div>
+      <div class="info-item" style="border:none"><span class="info-icon">✨</span><div><div class="info-label">כל הטיול</div><div class="info-value">זוהר הצפון אפשרי מאמצע ספטמבר!</div></div></div>
+    </div>
+  </div>
+
+  <!-- LIVE TRACKING / POLARSTEPS -->
+  <div class="section-title">📱 עקבו אחרינו ותעלו תמונות</div>
+  <div class="card" style="display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;justify-content:center">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&bgcolor=ffffff&data=https%3A%2F%2Fwww.polarsteps.com%2FShukiBenjamin%2F27149138-iceland-2026"
+         alt="QR לטיול ב-Polarsteps" style="border-radius:8px;background:white;padding:6px;width:150px;height:150px;flex-shrink:0">
+    <div style="flex:1;min-width:180px">
+      <div style="font-size:14px;font-weight:700;margin-bottom:6px">🗺️ המסלול שלנו חי ב-Polarsteps</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:0.75rem">
+        סרקו את הקוד או לחצו על הכפתור — תוכלו לעקוב אחרי המיקום בזמן אמת ולהעלות תמונות מהטלפון ישירות לטיול המשותף.
+      </p>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank" class="btn" style="display:inline-block;text-decoration:none">פתח ב-Polarsteps ↗</a>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="section-title">🔗 קישורים מהירים</div>
+  <div class="grid-3">
+    <a href="itinerary.html" class="card" style="text-decoration:none;text-align:center;display:block">
+      <div style="font-size:28px;margin-bottom:6px">📅</div>
+      <div style="font-size:13px;font-weight:700">תוכנית הטיול</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:3px">12 ימים מפורטים</div>
+    </a>
+    <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank" class="card" style="text-decoration:none;text-align:center;display:block">
+      <div style="font-size:28px;margin-bottom:6px">📸</div>
+      <div style="font-size:13px;font-weight:700">תמונות וטיול חי</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:3px">Polarsteps ↗</div>
+    </a>
+    <a href="private.html" class="card" style="text-decoration:none;text-align:center;display:block">
+      <div style="font-size:28px;margin-bottom:6px">🔐</div>
+      <div style="font-size:13px;font-weight:700">מקומות לינה</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:3px">קודי אישור + כתובות</div>
+    </a>
+  </div>
+
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+// ─── TRIP DATA ───────────────────────────────────────────────
+const DAYS = [
+  { day:1, date:"2026-09-16", title:"נחיתה ורייקיאוויק", emoji:"✈️",
+    lat:64.1466, lng:-21.9426,
+    schedule:[
+      { slot:"am",  label:"04:30", text:"הגעה לשדה התעופה ת״א" },
+      { slot:"am",  label:"07:30", text:"המראה LY221 — TLV → CDG", sub:"אל-על · Boeing 737" },
+      { slot:"pm",  label:"11:30", text:"נחיתה פריז CDG · מעבר לטרמינל 1" },
+      { slot:"pm",  label:"14:00", text:"המראה FI543 — CDG → KEF", sub:"Icelandair · 3:35 שעות" },
+      { slot:"pm",  label:"15:35", text:"נחיתה רייקיאוויק KEF 🧊", sub:"שעון איסלנד = ישראל −3" },
+      { slot:"eve", label:"16:00", text:"איסוף רכב Blue Car Rental", sub:"Booking #0N504Z" },
+    ],
+    stay:"🏠 Airbnb · Klapparstígur 1, Reykjavík" },
+  { day:2, date:"2026-09-17", title:"סיור רייקיאוויק", emoji:"🚲",
+    lat:64.1466, lng:-21.9426,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"10:00 — סיור אופניים חשמליות", sub:"Old Harbor · Sun Voyager · Hallgrímskirkja" },
+      { slot:"pm",  label:"אחה\"צ", text:"פנוי לסיור עצמאי בעיר" },
+      { slot:"eve", label:"ערב",  text:"18:00 — FlyOver Iceland", sub:"הוזמן · GetYourGuide" },
+    ],
+    stay:"🏠 Airbnb · Klapparstígur 1, Reykjavík" },
+  { day:3, date:"2026-09-18", title:"נסיעה לסנייפלס", emoji:"🦭",
+    lat:64.9205, lng:-23.9063,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"נסיעה צפונה דרך Hvalfjörður" },
+      { slot:"drv", label:"נסיעה", text:"~3 שעות" },
+      { slot:"pm",  label:"אחה\"צ", text:"Gerðuberg — עמודי בזלת" },
+      { slot:"eve", label:"ערב",  text:"Ytri Tunga — כלבי ים 🦭" },
+    ],
+    stay:"🏠 Airbnb · Hella, Hellissandur" },
+  { day:4, date:"2026-09-19", title:"לב חצי האי", emoji:"🏔️",
+    lat:64.9205, lng:-23.9063,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"Djúpalónssandur · Hellnar", sub:"Vatnshellir — מערת לבה 8,000 שנה" },
+      { slot:"drv", label:"נסיעה", text:"~1.5 שעות" },
+      { slot:"pm",  label:"אחה\"צ", text:"Kirkjufell ⭐", sub:"להכין מצלמות!" },
+      { slot:"eve", label:"ערב",  text:"צילום שקיעה" },
+    ],
+    stay:"🏠 Airbnb · Hella, Hellissandur" },
+  { day:5, date:"2026-09-20", title:"נסיעה לדרום", emoji:"💧",
+    lat:63.5353, lng:-19.3544,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"נסיעה ארוכה דרומה", sub:"עצירה ב-Seljalandsfoss" },
+      { slot:"drv", label:"נסיעה", text:"~4.5 שעות" },
+      { slot:"pm",  label:"אחה\"צ", text:"Skógafoss — מפל 60 מטר" },
+      { slot:"eve", label:"ערב",  text:"הגעה לאזור Vík" },
+    ],
+    stay:"🏨 Sólheimahjáleiga Guesthouse" },
+  { day:6, date:"2026-09-21", title:"אקשן בדרום", emoji:"🧊",
+    lat:63.5353, lng:-19.3544,
+    schedule:[
+      { slot:"am",  label:"09:00", text:"סיור מערת קרח", sub:"Ref: KTR-100620490" },
+      { slot:"drv", label:"נסיעה", text:"~1 שעה ל-Vík" },
+      { slot:"pm",  label:"14:00", text:"Zipline בVík ⭐", sub:"Ref: KTR-100708978" },
+      { slot:"eve", label:"ערב",  text:"Reynisfjara — חוף חול שחור" },
+    ],
+    stay:"🏨 Sólheimahjáleiga Guesthouse" },
+  { day:7, date:"2026-09-22", title:"נסיעה מזרחה", emoji:"🏞️",
+    lat:64.2539, lng:-15.2082,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"Fjaðrárgljúfur — קניון מרהיב" },
+      { slot:"drv", label:"נסיעה", text:"~3 שעות נטו" },
+      { slot:"pm",  label:"אחה\"צ", text:"Svartifoss — מפל עמודי בזלת", sub:"הליכה ~2 שעות" },
+      { slot:"eve", label:"ערב",  text:"הגעה ל-Hofn" },
+    ],
+    stay:"🏨 Brunnholl Country Guesthouse, Hofn" },
+  { day:8, date:"2026-09-23", title:"מלכות הקרח", emoji:"🧊",
+    lat:64.2539, lng:-15.2082,
+    schedule:[
+      { slot:"am",  label:"10:00", text:"Zodiac Glacier Lagoon ⭐", sub:"Ref: ICE-101020929 · להגיע בזמן!" },
+      { slot:"drv", label:"נסיעה", text:"~30 דק' ל-Diamond Beach" },
+      { slot:"pm",  label:"אחה\"צ", text:"Diamond Beach — קרחונים על חוף שחור" },
+      { slot:"eve", label:"ערב",  text:"Stokksnes — Viking Village & Sunset" },
+    ],
+    stay:"🏨 Brunnholl Country Guesthouse, Hofn" },
+  { day:9, date:"2026-09-24", title:"חזרה מערבה", emoji:"🌿",
+    lat:63.9334, lng:-20.9968,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"יציאה מ-Hofn מערבה" },
+      { slot:"drv", label:"נסיעה", text:"~4 שעות לSelfoss" },
+      { slot:"pm",  label:"אחה\"צ", text:"Urriðafoss — המפל הרחב באיסלנד" },
+      { slot:"eve", label:"ערב",  text:"הגעה לSelfoss · מנוחה" },
+    ],
+    stay:"🏠 Airbnb · Stangarbraut 2, Selfoss" },
+  { day:10, date:"2026-09-25", title:"Golden Circle", emoji:"♨️",
+    lat:63.9334, lng:-20.9968,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"Geysir — Strokkur ⭐", sub:"התפרצות כל 6–10 דקות" },
+      { slot:"drv", label:"נסיעה", text:"~30 דק'" },
+      { slot:"pm",  label:"אחה\"צ", text:"Gullfoss + Þingvellir ⭐⭐", sub:"מעבר בין לוחות טקטוניים" },
+      { slot:"eve", label:"ערב",  text:"חזרה לSelfoss" },
+    ],
+    stay:"🏠 Airbnb · Stangarbraut 2, Selfoss" },
+  { day:11, date:"2026-09-26", title:"פינוק וסיום", emoji:"🛁",
+    lat:63.9856, lng:-22.5579,
+    schedule:[
+      { slot:"am",  label:"בוקר", text:"Blue Lagoon ⭐⭐", sub:"ספא תרמי · להזמין מראש!" },
+      { slot:"drv", label:"נסיעה", text:"~30 דק'" },
+      { slot:"pm",  label:"אחה\"צ", text:"Reykjanes: Gunnuhver + Brimketill", sub:"אופציונלי" },
+      { slot:"eve", label:"ערב",  text:"כפלאוויק · ארוחת ערב · לישון מוקדם" },
+    ],
+    stay:"🏨 Hotel Keflavik, Keflavík Airport" },
+  { day:12, date:"2026-09-27", title:"יום סיום — טיסה", emoji:"🏠",
+    lat:63.9856, lng:-22.5579,
+    schedule:[
+      { slot:"am",  label:"04:35", text:"הגעה לשדה התעופה KEF" },
+      { slot:"am",  label:"07:35", text:"המראה FI542 — KEF → CDG", sub:"Icelandair · 3:30 שעות" },
+      { slot:"pm",  label:"11:05", text:"נחיתה פריז CDG · מעבר לטרמינל 2B" },
+      { slot:"pm",  label:"15:35", text:"המראה LY324 — CDG → TLV", sub:"אל-על · Boeing 787" },
+      { slot:"eve", label:"20:55", text:"נחיתה ת\"א 🏠" },
+    ],
+    stay:"" },
+];
+
+// ─── WEATHER COORDS BY DAY ────────────────────────────────────
+// Returns {lat,lng} for the location of that day
+function coordsForDay(day) {
+  return { lat: day.lat, lng: day.lng };
+}
+
+// ─── BUILD CARD ───────────────────────────────────────────────
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function buildTTCol(d, label, labelColor, hdrClass, weatherId) {
+  const dayNames = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  const dt = new Date(d.date);
+  const rows = d.schedule.map(s => `
+    <div class="tt-row">
+      <span class="tt-slot ${s.slot}">${s.label}</span>
+      <div>
+        <div class="tt-text">${s.text}</div>
+        ${s.sub ? `<div class="tt-sub">${s.sub}</div>` : ''}
+      </div>
+    </div>`).join('');
+
+  return `
+    <div class="tt-col">
+      <div class="tt-hdr ${hdrClass}">
+        <div class="tt-label" style="color:${labelColor}">${label}</div>
+        <div class="tt-title">${d.emoji} יום ${d.day} — ${d.title}</div>
+        <div class="tt-date">${dayNames[dt.getDay()]} · ${dt.getDate()} בספטמבר</div>
+      </div>
+      <div class="tt-body">
+        ${rows}
+        ${d.stay ? `<div class="tt-sep"></div><div class="tt-stay">${d.stay}</div>` : ''}
+        <a href="itinerary.html#day${d.day}" class="tt-link">לתוכנית יום ${d.day} →</a>
+      </div>
+      <div class="w-mini" id="${weatherId}">
+        <div class="wlbl">מזג אוויר · <a href="https://en.vedur.is/weather/forecasts/areas/" target="_blank">vedur.is ↗</a></div>
+        <div class="wicon">⏳</div>
+        <div class="wtmp" style="font-size:12px;color:var(--text2)">טוען...</div>
+      </div>
+    </div>`;
+}
+
+// ─── WEATHER ──────────────────────────────────────────────────
+async function loadWeatherForDay(elementId, lat, lng) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Atlantic%2FReykjavik&forecast_days=1`;
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  try {
+    const data = await (await fetch(url)).json();
+    const code = data.daily.weathercode[0];
+    const maxT = data.daily.temperature_2m_max[0];
+    const minT = data.daily.temperature_2m_min[0];
+    const WMO = [[0,'☀️','בהיר'],[2,'⛅','מעונן חלקית'],[3,'☁️','מעונן'],
+                 [48,'🌫️','ערפל'],[57,'🌦️','ממטרים'],[67,'🌧️','גשם'],
+                 [77,'❄️','שלג'],[82,'🌧️','גשם'],[99,'⛈️','סופה']];
+    const [,icon,desc] = WMO.findLast(([t])=>code>=t)||WMO[0];
+    el.innerHTML = `
+      <div class="wlbl">מזג אוויר · <a href="https://en.vedur.is/weather/forecasts/areas/" target="_blank">vedur.is ↗</a></div>
+      <div class="wicon">${icon}</div>
+      <div class="wtmp" style="direction:ltr">${Math.round(maxT)}°<span style="font-weight:400;font-size:0.8em;opacity:0.7"> / ${Math.round(minT)}°</span></div>
+      <div class="wdesc">${desc}</div>`;
+  } catch(e) {
+    el.innerHTML = `<div class="wlbl">מזג אוויר</div><div class="wicon">🌡️</div><div class="wdesc">לא זמין</div>`;
+  }
+}
+
+// ─── MAIN LOGIC ───────────────────────────────────────────────
+function tick(){
+  const now   = new Date();
+  const start = new Date('2026-09-16T00:00:00');
+  const end   = new Date('2026-09-27T23:59:59');
+  const ts    = now.toISOString().slice(0,10);
+  const ts2   = new Date(now.getTime()+86400000).toISOString().slice(0,10);
+
+  if(now > end){
+    document.getElementById('post-trip').style.display='block';
+    return;
+  }
+
+  if(now >= start){
+    // During trip
+    const todayDay    = DAYS.find(d=>d.date===ts);
+    const tomorrowDay = DAYS.find(d=>d.date===ts2);
+    if(todayDay){
+      document.getElementById('today-section').style.display='block';
+      document.getElementById('tt-grid').innerHTML =
+        buildTTCol(todayDay,    '📌 מה עושים היום', '#93c5fd', 'today', 'w-today') +
+        (tomorrowDay ? buildTTCol(tomorrowDay, '📌 מה עושים מחר', '#fcd34d', 'tmrw',  'w-tomorrow') : '');
+      loadWeatherForDay('w-today',    todayDay.lat,    todayDay.lng);
+      if(tomorrowDay) loadWeatherForDay('w-tomorrow', tomorrowDay.lat, tomorrowDay.lng);
+    }
+    return;
+  }
+
+  // Before trip — countdown + days 1 & 2 preview
+  document.getElementById('pre-trip').style.display='block';
+  const diff=start-now;
+  document.getElementById('cd-days').textContent  = Math.floor(diff/86400000);
+  document.getElementById('cd-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
+  document.getElementById('cd-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
+  document.getElementById('cd-secs').textContent  = pad(Math.floor((diff%60000)/1000));
+
+  // Show day 1 & 2 preview if not already rendered
+  const grid = document.getElementById('pre-grid');
+  if(!grid.innerHTML){
+    grid.innerHTML =
+      buildTTCol(DAYS[0], '📋 יום 1 — יום הנסיעה',  '#93c5fd', 'today', 'pw-1') +
+      buildTTCol(DAYS[1], '📋 יום 2 — רייקיאוויק',  '#4dffa0', 'tmrw',  'pw-2');
+    // no weather for pre-trip (future dates won't have forecast)
+    ['pw-1','pw-2'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.innerHTML=`<div class="wlbl">מזג אוויר</div><div class="wicon">🌤️</div><div class="wdesc">זמין בסמוך לתאריך</div>`;
+    });
+  }
+}
+
+tick();
+setInterval(tick,1000);
+</script>
+</body>
+</html>

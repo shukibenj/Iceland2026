@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הדמיה — תוכנית היום ומחר</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tt-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto; gap:8px 10px; margin-bottom:10px; }
+    @media(max-width:580px){ .tt-grid{ grid-template-columns:1fr; grid-template-rows:none; } }
+    .tt-col { display:contents; }
+    .tt-hdr { border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.22); background:rgba(20,40,80,0.88);  grid-row:1;}
+    .tt-hdr.today { border-color:rgba(147,197,253,0.5);  grid-row:1;}
+    .tt-hdr.tmrw  { border-color:rgba(252,211,77,0.45);  grid-row:1;}
+    .tt-label { font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:5px; }
+    .tt-title { font-size:14px; font-weight:800; color:#ffffff; margin-bottom:2px; }
+    .tt-date  { font-size:11px; color:#c8ddf5; }
+    .tt-body  { background:rgba(20,40,80,0.82); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:12px;  grid-row:2;}
+    .tt-row   { display:flex; gap:7px; align-items:flex-start; margin-bottom:5px; }
+    .tt-slot  { font-size:10px; font-weight:700; min-width:40px; padding-top:1px; flex-shrink:0; }
+    .tt-slot.am  { color:#4dffa0; }
+    .tt-slot.pm  { color:#60b4ff; }
+    .tt-slot.eve { color:#d090ff; }
+    .tt-slot.drv { color:#ff9966; }
+    .tt-text  { font-size:12px; color:#ffffff; line-height:1.4; }
+    .tt-sub   { font-size:10.5px; color:#c8ddf5; line-height:1.4; margin-top:1px; }
+    .tt-sep   { height:1px; background:rgba(255,255,255,0.16); margin:8px 0; }
+    .tt-stay  { display:flex; gap:5px; align-items:center; font-size:11px; color:#c8ddf5; }
+    .tt-link  { font-size:11px; color:#60b4ff; text-decoration:none; margin-top:6px; display:inline-block; }
+    .w-mini   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); border-radius:10px; padding:10px; text-align:center; color:#ffffff;  grid-row:3;}
+    .w-mini .wlbl  { font-size:10px; color:#c8ddf5; margin-bottom:4px; }
+    .w-mini .wicon { font-size:22px; margin-bottom:3px; }
+    .w-mini .wtmp  { font-size:15px; font-weight:800; }
+    .w-mini .wdesc { font-size:10px; color:#c8ddf5; margin-top:2px; }
+    .demo-note { text-align:center; font-size:11px; color:#c8ddf5; margin-bottom:1rem; padding:8px 12px; background:rgba(255,255,255,0.06); border-radius:8px; border:1px solid rgba(255,255,255,0.16); }
+  </style>
+</head>
+<body>
+<div id="bg-slideshow" class="bg-slideshow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-burger" id="nav-burger">☰</button>
+    <div class="nav-links">
+      <a href="index.html">🏠 בית</a>
+      <a href="itinerary.html">📅 תוכנית</a>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+      <a href="info.html">ℹ️ מידע</a>
+      <a href="private.html">🔐 פרטי</a>
+    </div>
+    <span class="nav-brand">🧊 <span>איסלנד 2026</span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">🏠 בית</a>
+  <a href="itinerary.html">📅 תוכנית</a>
+  <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
+  <a href="info.html">ℹ️ מידע</a>
+  <a href="private.html">🔐 פרטי</a>
+</div>
+
+<div class="page">
+  <div class="hero">
+    <h1>🧊 טיולי אבא — איסלנד 2026</h1>
+    <p class="sub">הדמיה — כך ייראה דף הבית ביום 8 (23/9) של הטיול</p>
+  </div>
+
+  <div class="demo-note">⬇️ הדמיה של אזור "היום ומחר" — בפועל מתעדכן אוטומטית לפי התאריך</div>
+
+  <div class="tt-grid">
+
+    <!-- TODAY -->
+    <div class="tt-col">
+      <div class="tt-hdr today">
+        <div class="tt-label" style="color:#60b4ff">📌 מה עושים היום</div>
+        <div class="tt-title">🧊 יום 8 — מלכות הקרח</div>
+        <div class="tt-date">רביעי · 23 בספטמבר · Glacier Area</div>
+      </div>
+      <div class="tt-body">
+        <div class="tt-row"><span class="tt-slot am">בוקר</span><div><div class="tt-text">10:00 — Zodiac Glacier Lagoon ⭐</div><div class="tt-sub">Ref: ICE-101020929 · להגיע בזמן!</div></div></div>
+        <div class="tt-row"><span class="tt-slot drv">נסיעה</span><div><div class="tt-text">~30 דק' ל-Diamond Beach</div></div></div>
+        <div class="tt-row"><span class="tt-slot pm">אחה"צ</span><div><div class="tt-text">Diamond Beach</div><div class="tt-sub">קרחונים על חוף חול שחור</div></div></div>
+        <div class="tt-row"><span class="tt-slot eve">ערב</span><div><div class="tt-text">Stokksnes — Viking Village & Sunset</div><div class="tt-sub">צילום שקיעה</div></div></div>
+        <div class="tt-sep"></div>
+        <div class="tt-stay">🏨 Brunnholl Country Guesthouse, Hofn</div>
+        <a href="itinerary.html#day8" class="tt-link">לתוכנית יום 8 →</a>
+      </div>
+      <div class="w-mini">
+        <div class="wlbl">מזג אוויר · היום · <a href="https://en.vedur.is/weather/forecasts/areas/" target="_blank">vedur.is ↗</a></div>
+        <div class="wicon">⛅</div>
+        <div class="wtmp">9° / 5°</div>
+        <div class="wdesc">מעונן חלקית · רוח מערבית</div>
+      </div>
+    </div>
+
+    <!-- TOMORROW -->
+    <div class="tt-col">
+      <div class="tt-hdr tmrw">
+        <div class="tt-label" style="color:#ffe066">📌 מה עושים מחר</div>
+        <div class="tt-title">🌿 יום 9 — חזרה מערבה</div>
+        <div class="tt-date">חמישי · 24 בספטמבר · Selfoss</div>
+      </div>
+      <div class="tt-body">
+        <div class="tt-row"><span class="tt-slot am">בוקר</span><div><div class="tt-text">יציאה מ-Hofn מערבה</div><div class="tt-sub">נסיעה איטית עם עצירות</div></div></div>
+        <div class="tt-row"><span class="tt-slot drv">נסיעה</span><div><div class="tt-text">~4 שעות לSelfoss</div></div></div>
+        <div class="tt-row"><span class="tt-slot pm">אחה"צ</span><div><div class="tt-text">Urriðafoss</div><div class="tt-sub">המפל הרחב באיסלנד</div></div></div>
+        <div class="tt-row"><span class="tt-slot eve">ערב</span><div><div class="tt-text">הגעה לSelfoss · ארוחת ערב</div></div></div>
+        <div class="tt-sep"></div>
+        <div class="tt-stay">🏠 Airbnb · Stangarbraut 2, Selfoss</div>
+        <a href="itinerary.html#day9" class="tt-link">לתוכנית יום 9 →</a>
+      </div>
+      <div class="w-mini">
+        <div class="wlbl">מזג אוויר · מחר · <a href="https://en.vedur.is/weather/forecasts/areas/" target="_blank">vedur.is ↗</a></div>
+        <div class="wicon">🌧️</div>
+        <div class="wtmp">8° / 4°</div>
+        <div class="wdesc">גשם · להביא ציוד גשם</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+</body>
+</html>
