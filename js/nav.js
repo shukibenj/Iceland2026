@@ -1,15 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const burger = document.getElementById('nav-burger');
-  const menu   = document.getElementById('mobile-menu');
-  if (burger && menu) {
-    burger.addEventListener('click', () => menu.classList.toggle('open'));
-    document.addEventListener('click', e => {
-      if (!burger.contains(e.target) && !menu.contains(e.target))
-        menu.classList.remove('open');
-    });
-  }
-});
-
 // BG Slideshow — Iceland photos from Unsplash
 const BG_IMAGES = [
   "https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=1600&q=80",

@@ -8,15 +8,18 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧊</text></svg>">
   <style>
     .tt-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto; gap:8px 10px; margin-bottom:10px; }
-    @media(max-width:580px){ .tt-grid{ grid-template-columns:1fr; grid-template-rows:none; } }
-    .tt-col { display:contents; }
-    .tt-hdr { border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.22); background:rgba(20,40,80,0.88); grid-row:1; }
+    .tt-col { display:grid; grid-row:1/4; grid-template-rows:subgrid; gap:8px; }
+    @media(max-width:580px){
+      .tt-grid{ grid-template-columns:1fr; grid-template-rows:none; }
+      .tt-col{ display:flex; flex-direction:column; grid-row:auto; }
+    }
+    .tt-hdr { border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.22); background:rgba(20,40,80,0.88); }
     .tt-hdr.today { border-color:rgba(147,197,253,0.5); }
     .tt-hdr.tmrw  { border-color:rgba(252,211,77,0.45); }
     .tt-label { font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:5px; }
     .tt-title { font-size:14px; font-weight:800; color:var(--text); margin-bottom:2px; }
     .tt-date  { font-size:11px; color:var(--text2); }
-    .tt-body  { background:rgba(20,40,80,0.82); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:12px; grid-row:2; }
+    .tt-body  { background:rgba(20,40,80,0.82); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:12px; }
     .tt-row   { display:flex; gap:7px; align-items:flex-start; margin-bottom:5px; }
     .tt-slot  { font-size:10px; font-weight:700; min-width:40px; padding-top:1px; flex-shrink:0; }
     .tt-slot.am  { color:#6ee7b7; }
@@ -32,7 +35,7 @@
       .tt-title{font-size:16px} .tt-text{font-size:14px} .tt-sub{font-size:12px}
       .tt-slot{font-size:12px;min-width:46px} .tt-date{font-size:12px}
     }
-    .w-mini   { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:10px; padding:10px; text-align:center; color:var(--text); grid-row:3; }
+    .w-mini   { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:10px; padding:10px; text-align:center; color:var(--text); margin-top:auto; }
     .w-mini .wlbl  { font-size:11px; color:var(--text2); margin-bottom:4px; }
     .w-mini .wlbl a { color:var(--accent); text-decoration:none; }
     .w-mini .wicon { font-size:24px; margin-bottom:3px; }
@@ -48,24 +51,16 @@
 
 <nav>
   <div class="nav-inner">
-    <button class="nav-burger" id="nav-burger" aria-label="תפריט">☰</button>
     <div class="nav-links">
-      <a href="index.html" class="active">🏠 בית</a>
-      <a href="itinerary.html">📅 תוכנית</a>
-      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
-      <a href="info.html">ℹ️ מידע</a>
-      <a href="private.html">🔐 פרטי</a>
+      <a href="index.html" class="active"><span class="nav-icon">🏠</span><span class="nav-label">בית</span></a>
+      <a href="itinerary.html"><span class="nav-icon">📅</span><span class="nav-label">תוכנית</span></a>
+      <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank"><span class="nav-icon">📸</span><span class="nav-label">תמונות</span></a>
+      <a href="info.html"><span class="nav-icon">ℹ️</span><span class="nav-label">מידע</span></a>
+      <a href="private.html"><span class="nav-icon">🔐</span><span class="nav-label">פרטי</span></a>
     </div>
-    <span class="nav-brand">🧊 <span>איסלנד 2026</span></span>
+    <span class="nav-brand">🧊<span class="nav-brand-text"> איסלנד 2026</span></span>
   </div>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" class="active">🏠 בית</a>
-  <a href="itinerary.html">📅 תוכנית</a>
-  <a href="https://www.polarsteps.com/ShukiBenjamin/27149138-iceland-2026" target="_blank">📸 תמונות</a>
-  <a href="info.html">ℹ️ מידע</a>
-  <a href="private.html">🔐 פרטי</a>
-</div>
 
 <div class="page">
 
@@ -319,15 +314,23 @@ function buildTTCol(d, label, labelColor, hdrClass, weatherId) {
 }
 
 // ─── WEATHER ──────────────────────────────────────────────────
-async function loadWeatherForDay(elementId, lat, lng) {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Atlantic%2FReykjavik&forecast_days=1`;
+// Fetches a 16-day forecast and picks out the specific date requested.
+// Works both for "today/tomorrow" (during trip) and future preview days
+// (pre-trip, e.g. day 1 & 2), since Open-Meteo returns up to 16 days ahead.
+async function loadWeatherForDate(elementId, lat, lng, dateStr) {
   const el = document.getElementById(elementId);
   if (!el) return;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Atlantic%2FReykjavik&forecast_days=16`;
   try {
     const data = await (await fetch(url)).json();
-    const code = data.daily.weathercode[0];
-    const maxT = data.daily.temperature_2m_max[0];
-    const minT = data.daily.temperature_2m_min[0];
+    const idx = data.daily.time.indexOf(dateStr);
+    if (idx === -1) {
+      el.innerHTML = `<div class="wlbl">מזג אוויר</div><div class="wicon">🌤️</div><div class="wdesc" style="font-size:11px">התחזית תתעדכן בקרוב</div>`;
+      return;
+    }
+    const code = data.daily.weathercode[idx];
+    const maxT = data.daily.temperature_2m_max[idx];
+    const minT = data.daily.temperature_2m_min[idx];
     const WMO = [[0,'☀️','בהיר'],[2,'⛅','מעונן חלקית'],[3,'☁️','מעונן'],
                  [48,'🌫️','ערפל'],[57,'🌦️','ממטרים'],[67,'🌧️','גשם'],
                  [77,'❄️','שלג'],[82,'🌧️','גשם'],[99,'⛈️','סופה']];
@@ -364,8 +367,8 @@ function tick(){
       document.getElementById('tt-grid').innerHTML =
         buildTTCol(todayDay,    '📌 מה עושים היום', '#93c5fd', 'today', 'w-today') +
         (tomorrowDay ? buildTTCol(tomorrowDay, '📌 מה עושים מחר', '#fcd34d', 'tmrw',  'w-tomorrow') : '');
-      loadWeatherForDay('w-today',    todayDay.lat,    todayDay.lng);
-      if(tomorrowDay) loadWeatherForDay('w-tomorrow', tomorrowDay.lat, tomorrowDay.lng);
+      loadWeatherForDate('w-today',    todayDay.lat,    todayDay.lng,    todayDay.date);
+      if(tomorrowDay) loadWeatherForDate('w-tomorrow', tomorrowDay.lat, tomorrowDay.lng, tomorrowDay.date);
     }
     return;
   }
@@ -384,11 +387,9 @@ function tick(){
     grid.innerHTML =
       buildTTCol(DAYS[0], '📋 יום 1 — יום הנסיעה',  '#93c5fd', 'today', 'pw-1') +
       buildTTCol(DAYS[1], '📋 יום 2 — רייקיאוויק',  '#4dffa0', 'tmrw',  'pw-2');
-    // no weather for pre-trip (future dates won't have forecast)
-    ['pw-1','pw-2'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(el) el.innerHTML=`<div class="wlbl">מזג אוויר</div><div class="wicon">🌤️</div><div class="wdesc">זמין בסמוך לתאריך</div>`;
-    });
+    // Open-Meteo covers up to 16 days ahead — try real forecast for day 1 & 2
+    loadWeatherForDate('pw-1', DAYS[0].lat, DAYS[0].lng, DAYS[0].date);
+    loadWeatherForDate('pw-2', DAYS[1].lat, DAYS[1].lng, DAYS[1].date);
   }
 }
 
