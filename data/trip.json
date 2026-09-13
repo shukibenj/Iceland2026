@@ -1,0 +1,205 @@
+{
+  "title": "טיולי אבא - איסלנד 2026",
+  "subtitle": "16–27 ספטמבר 2026 · 5 מטיילים",
+  "startDate": "2026-09-16",
+  "endDate": "2026-09-27",
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-09-16",
+      "title": "נחיתה ורייקיאוויק",
+      "region": "Reykjavík",
+      "summary": "נחיתה אחה\"צ, איסוף רכב, התארגנות",
+      "morning": "נחיתה אחה\"צ · איסוף הרכב (Hertz, #0N504Z)",
+      "afternoon": "התאקלמות · ארוחת ערב בעיר",
+      "driveTime": "45 דקות",
+      "emoji": "✈️"
+    },
+    {
+      "day": 2,
+      "date": "2026-09-17",
+      "title": "סיור רייקיאוויק",
+      "region": "Reykjavík",
+      "summary": "Old Harbor, Sun Voyager, Hallgrímskirkja, FlyOver",
+      "morning": "10:00 — סיור אופניים חשמליות · Old Harbor, Sun Voyager, Harpa",
+      "afternoon": "18:00 — FlyOver Iceland (הוזמן)",
+      "driveTime": "",
+      "emoji": "🚲"
+    },
+    {
+      "day": 3,
+      "date": "2026-09-18",
+      "title": "נסיעה לסנייפלס",
+      "region": "Snæfellsnes",
+      "summary": "Gerðuberg, חוף Ytri Tunga (כלבי ים)",
+      "morning": "נסיעה צפונה דרך Hvalfjörður · עצירה ב-Gerðuberg",
+      "afternoon": "חוף Ytri Tunga — צפייה בכלבי ים",
+      "driveTime": "3 שעות",
+      "emoji": "🦭"
+    },
+    {
+      "day": 4,
+      "date": "2026-09-19",
+      "title": "לב חצי האי",
+      "region": "Snæfellsnes",
+      "summary": "Kirkjufell, Vatnshellir, Djúpalónssandur, Hellnar",
+      "morning": "Djúpalónssandur · Hellnar · Vatnshellir (מערת לבה)",
+      "afternoon": "Kirkjufell ⭐ — להכין מצלמות",
+      "driveTime": "1.5 שעות",
+      "emoji": "🏔️"
+    },
+    {
+      "day": 5,
+      "date": "2026-09-20",
+      "title": "נסיעה לדרום",
+      "region": "Vík / Hella",
+      "summary": "נסיעה ארוכה לדרום · Skogafoss",
+      "morning": "נסיעה ארוכה דרומה",
+      "afternoon": "Skógafoss — מפל 60 מטר",
+      "driveTime": "4.5 שעות",
+      "emoji": "💧"
+    },
+    {
+      "day": 6,
+      "date": "2026-09-21",
+      "title": "אקשן בדרום",
+      "region": "Vík / Hella",
+      "summary": "מערת קרח, Zipline בVík",
+      "morning": "09:00 — סיור מערת קרח (Ref: KTR-100620490)",
+      "afternoon": "14:00 — Zipline בVík (Ref: KTR-100708978)",
+      "driveTime": "1 שעה",
+      "emoji": "🧊"
+    },
+    {
+      "day": 7,
+      "date": "2026-09-22",
+      "title": "נסיעה מזרחה",
+      "region": "Glacier Area",
+      "summary": "Fjaðrárgljúfur (קניון), Svartifoss (הליכה)",
+      "morning": "Fjaðrárgljúfur — קניון מרהיב",
+      "afternoon": "Svartifoss — מפל עם עמודי בזלת",
+      "driveTime": "3 שעות",
+      "emoji": "🏞️"
+    },
+    {
+      "day": 8,
+      "date": "2026-09-23",
+      "title": "מלכות הקרח",
+      "region": "Glacier Area",
+      "summary": "Zodiac בלגונת הקרחונים, Diamond Beach, Stokksnes",
+      "morning": "10:00 — Zodiac Glacier Lagoon (Ref: ICE-101020929)",
+      "afternoon": "Diamond Beach · Stokksnes",
+      "driveTime": "1 שעה",
+      "emoji": "🧊"
+    },
+    {
+      "day": 9,
+      "date": "2026-09-24",
+      "title": "חזרה מערבה",
+      "region": "Selfoss",
+      "summary": "נסיעה איטית עם עצירות · Urriðafoss",
+      "morning": "נסיעה איטית עם עצירות לצפון",
+      "afternoon": "ביקור ב-Urriðafoss",
+      "driveTime": "4 שעות",
+      "emoji": "🌿"
+    },
+    {
+      "day": 10,
+      "date": "2026-09-25",
+      "title": "Golden Circle",
+      "region": "Selfoss",
+      "summary": "Geysir + Gullfoss + Þingvellir ⭐",
+      "morning": "Geysir + Gullfoss",
+      "afternoon": "Þingvellir — מעבר בין לוחות טקטוניים",
+      "driveTime": "1–2 שעות",
+      "emoji": "♨️"
+    },
+    {
+      "day": 11,
+      "date": "2026-09-26",
+      "title": "פינוק וסיום",
+      "region": "Keflavík",
+      "summary": "Blue Lagoon ⭐ · Reykjanes Peninsula",
+      "morning": "Blue Lagoon — ספא תרמי",
+      "afternoon": "ביקור ב-Reykjanes Peninsula (אופציונלי)",
+      "driveTime": "2.5 שעות",
+      "emoji": "🛁"
+    },
+    {
+      "day": 12,
+      "date": "2026-09-27",
+      "title": "יום סיום — טיסה",
+      "region": "Keflavík",
+      "summary": "המראה 07:35",
+      "morning": "המראה 07:35 ✈️",
+      "afternoon": "טיסה חזרה הביתה",
+      "driveTime": "5 דקות לשדה",
+      "emoji": "🏠"
+    }
+  ],
+  "accommodation": [
+    {
+      "nights": "16–18 ספטמבר",
+      "name": "Airbnb — Klapparstígur 1, Reykjavík 101",
+      "confirmation": "HMJH4QB4QN",
+      "note": "ביטול עד 16 ספטמבר",
+      "link": ""
+    },
+    {
+      "nights": "18–20 ספטמבר",
+      "name": "Airbnb — Hella, Hellissandur, Snæfellsbær 360",
+      "confirmation": "HM32DTJ5QD",
+      "note": "ביטול עד 6 ספטמבר · כניסה: הבית הראשון משמאל בכניסה ל-Hellissandur, שלט Hella",
+      "link": ""
+    },
+    {
+      "nights": "20–22 ספטמבר",
+      "name": "Sólheimahjáleiga Guesthouse",
+      "confirmation": "Booking #5553684022 · PIN: 4915",
+      "note": "לא ניתן לביטול",
+      "link": ""
+    },
+    {
+      "nights": "22–24 ספטמבר",
+      "name": "Brunnholl Country Guesthouse, Hofn",
+      "confirmation": "Booking #6631695271 · PIN: 7900",
+      "note": "לא ניתן לביטול",
+      "link": ""
+    },
+    {
+      "nights": "24–26 ספטמבר",
+      "name": "Airbnb — 2 Stangarbraut, Selfoss 801",
+      "confirmation": "HMYRYDBRYW",
+      "note": "ביטול עד 19 ספטמבר",
+      "link": ""
+    },
+    {
+      "nights": "26–27 ספטמבר",
+      "name": "Hotel Keflavik by Reykjavik Keflavik Airport",
+      "confirmation": "Booking #5553638088 · PIN: 3278",
+      "note": "",
+      "link": ""
+    }
+  ],
+  "car": {
+    "model": "Toyota Highlander 7 Seater 4WD",
+    "company": "Hertz Iceland",
+    "bookingRef": "0N504Z",
+    "pickup": "16 ספטמבר 2026 · 16:00",
+    "dropoff": "27 ספטמבר 2026 · 05:30"
+  },
+  "flights": {
+    "outbound": "16 ספטמבר · נחיתה אחה\"צ · KEF",
+    "inbound": "27 ספטמבר · המראה 07:35 · KEF"
+  },
+  "usefulInfo": {
+    "currency": "ISK — כתר איסלנדי. 1 USD ≈ 135 ISK",
+    "language": "איסלנדית, אנגלית נפוצה מאוד",
+    "emergency": "112",
+    "roadConditions": "https://road.is",
+    "weather": "https://en.vedur.is",
+    "aurora": "https://en.vedur.is/weather/forecasts/aurora/",
+    "powerPlug": "Type F · 230V · מתאם אירופאי",
+    "driving": "צד ימין · מהירות מקסימאלית 90 קמ\"ש בכביש מהיר · F-Roads דורשים רכב 4×4"
+  }
+}
